@@ -3,11 +3,11 @@ import { MesuresService } from './mesures.service';
 import { CreateMesureDto } from './dto/create-mesure.dto';
 import { UpdateMesureDto } from './dto/update-mesure.dto';
 
-@Controller('mesures')
+@Controller('mesures') //on définit le contrôleur des mesures : il contient une classe regroupant les commandes APIs retrouvables sur le swagger
 export class MesuresController {
   constructor(private readonly mesuresService: MesuresService) {}
 
-  @Post()
+  @Post() //le @ (décorateur) permet de faire le lien avec le swagger (il augmente les possibilités d'actions de la méthode) : le nest interprète le @
   create(@Body() createMesureDto: CreateMesureDto) {
     return this.mesuresService.create(createMesureDto);
   }

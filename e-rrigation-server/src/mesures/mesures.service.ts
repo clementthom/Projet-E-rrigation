@@ -4,7 +4,7 @@ import { UpdateMesureDto } from './dto/update-mesure.dto';
 
 @Injectable()
 export class MesuresService {
-  create(createMesureDto: CreateMesureDto) {
+  create(createMesureDto: CreateMesureDto) { //code "normal" : pas de @
     return 'This action adds a new mesure';
   }
 
