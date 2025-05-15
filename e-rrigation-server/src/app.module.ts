@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { ServeStaticModule } from '@nestjs/serve-static'; //on importe serve-static
 import { join } from 'path'; //permet de trouver les chemins des fichiers en fonction de l'OS
 import { MesuresModule } from './mesures/mesures.module';
+import { DonneesMeteoJourModule } from './donnees-meteo-jour/donnees-meteo-jour.module';
+import { DonneesMeteoPeriodeModule } from './donnees-meteo-periode/donnees-meteo-periode.module';
 
 
 @Module({
@@ -13,6 +15,8 @@ import { MesuresModule } from './mesures/mesures.module';
       // serveRoot: '/static/',
     }),
     MesuresModule,
+    DonneesMeteoJourModule,
+    DonneesMeteoPeriodeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
