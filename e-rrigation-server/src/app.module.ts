@@ -6,6 +6,8 @@ import { join } from 'path'; //permet de trouver les chemins des fichiers en fon
 import { MesuresModule } from './mesures/mesures.module';
 import { DonneesMeteoJourModule } from './donnees-meteo-jour/donnees-meteo-jour.module';
 import { DonneesMeteoPeriodeModule } from './donnees-meteo-periode/donnees-meteo-periode.module';
+import { ArduinoModule } from './arduino/arduino.module';
+import { ArduinoModule } from './arduino/arduino.module';
 
 
 @Module({
@@ -17,6 +19,7 @@ import { DonneesMeteoPeriodeModule } from './donnees-meteo-periode/donnees-meteo
     MesuresModule,
     DonneesMeteoJourModule,
     DonneesMeteoPeriodeModule,
+    ArduinoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
