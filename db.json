@@ -1,4 +1,86 @@
 {
-    "meteo": [],
-    "mesure" : []
+  "meteo": [],
+  "mesures": [
+    {
+      "id": "0f95",
+      "temperature": 21.9,
+      "humidityExt": 88,
+      "humidity1": 72,
+      "humidity2": 83,
+      "lightIntensity": 3,
+      "timestamp": 1747489278710
+    },
+    {
+      "id": "5f39",
+      "temperature": 25.2,
+      "humidityExt": 90,
+      "humidity1": 68,
+      "humidity2": 74,
+      "lightIntensity": 0,
+      "timestamp": 1747489303511
+    },
+    {
+      "id": "bfee",
+      "temperature": 25.7,
+      "humidityExt": 69,
+      "humidity1": 79,
+      "humidity2": 85,
+      "lightIntensity": 0,
+      "timestamp": 1747489305169
+    },
+    {
+      "id": "4b5b",
+      "temperature": 26.9,
+      "humidityExt": 68,
+      "humidity1": 88,
+      "humidity2": 76,
+      "lightIntensity": 2,
+      "timestamp": 1747489310215
+    },
+    {
+      "id": "63e1",
+      "temperature": 21.4,
+      "humidityExt": 88,
+      "humidity1": 60,
+      "humidity2": 72,
+      "lightIntensity": 3,
+      "timestamp": 1747489315261
+    },
+    {
+      "id": "2016",
+      "temperature": 21.5,
+      "humidityExt": 89,
+      "humidity1": 60,
+      "humidity2": 72,
+      "lightIntensity": 0,
+      "timestamp": 1747489320307
+    },
+    {
+      "id": "7739",
+      "temperature": 21.6,
+      "humidityExt": 79,
+      "humidity1": 65,
+      "humidity2": 62,
+      "lightIntensity": 2,
+      "timestamp": 1747489325352
+    },
+    {
+      "id": "7238",
+      "temperature": 20.9,
+      "humidityExt": 66,
+      "humidity1": 78,
+      "humidity2": 63,
+      "lightIntensity": 5,
+      "timestamp": 1747489330399
+    },
+    {
+      "id": "4ce4",
+      "temperature": 21,
+      "humidityExt": 90,
+      "humidity1": 75,
+      "humidity2": 62,
+      "lightIntensity": 0,
+      "timestamp": 1747489335440
+    }
+  ]
 }

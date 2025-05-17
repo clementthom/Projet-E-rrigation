@@ -1,26 +1,86 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMesureDto } from './dto/create-mesure.dto';
 import { UpdateMesureDto } from './dto/update-mesure.dto';
+import axios from 'axios';
+import { Mesure } from './entities/mesure.entity';
 
 @Injectable()
 export class MesuresService {
-  create(createMesureDto: CreateMesureDto) { //code "normal" : pas de @
-    return 'This action adds a new mesure';
+  remove(id: string) {
+    throw new Error('Method not implemented.');
+  }
+  private readonly apiUrl = 'http://localhost:3000/mesures'; // URL du serveur JSON
+
+  // Créer une nouvelle mesure
+  async create(mesure: Omit<Mesure, 'id'>): Promise<Mesure> { //travaille avec une mesure sans ID, renvoie une mesure 
+    try {
+      const response = await axios.post<Mesure>(this.apiUrl, mesure); //reçoit une mesure de mesures.controller (lui-même passe par le dto create.mesure)
+      return response.data;
+    } catch (error) {
+      console.error('Erreur lors de la création de la mesure :', error.message);
+      throw error;
+    }
   }
 
-  findAll() {
-    return `This action returns all mesures`;
+  // Récupérer toutes les mesures
+  async findAll(): Promise<Mesure[]> { //renvoie un tableau de mesures
+    try {
+      const response = await axios.get<Mesure[]>(this.apiUrl);
+      return response.data;
+    } catch (error) {
+      console.error('Erreur lors de la récupération des mesures :', error.message);
+      throw error;
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} mesure`;
+  // Récupérer une mesure par ID
+  async findOne(id: string): Promise<Mesure | undefined> {
+    try {
+      const response = await axios.get<Mesure>(`${this.apiUrl}/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Erreur lors de la récupération de la mesure avec ID ${id} :`, error.message);
+      throw error;
+    }
   }
 
-  update(id: number, updateMesureDto: UpdateMesureDto) {
-    return `This action updates a #${id} mesure`;
+  // Mettre à jour une mesure
+  async update(id: string, updatedMesure: Partial<Mesure>): Promise<Mesure | undefined> {
+    try {
+      const response = await axios.patch<Mesure>(`${this.apiUrl}/${id}`, updatedMesure);
+      return response.data;
+    } catch (error) {
+      console.error(`Erreur lors de la mise à jour de la mesure avec ID ${id} :`, error.message);
+      throw error;
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} mesure`;
+  // Supprimer une mesure
+  async delete(id: string): Promise<boolean> {
+    try {
+      await axios.delete(`${this.apiUrl}/${id}`);
+      return true;
+    } catch (error) {
+      console.error(`Erreur lors de la suppression de la mesure avec ID ${id} :`, error.message);
+      throw error;
+    }
+  }
+
+  // Supprimer toutes les mesures
+  async clearMesures(): Promise<void> {
+    try {
+      const response = await axios.get<Mesure[]>(this.apiUrl);
+      const mesures = response.data;
+
+      for (const mesure of mesures) {
+        await axios.delete(`${this.apiUrl}/${mesure.id}`);
+        console.log(`Mesure avec ID ${mesure.id} supprimée.`);
+      }
+
+      console.log('Toutes les mesures ont été supprimées.');
+    } catch (error) {
+      console.error('Erreur lors de la suppression des mesures :', error.message);
+      throw error;
+    }
   }
 }
